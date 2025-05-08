@@ -1,16 +1,32 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
+const count = ref(0);
+
+const aaa = async () => {
+  console.log(1111);
+  const msg = await (window as any).ipcRenderer.invoke(
+    "ev:send-desktop-capturer_source",
+    { a: 1, b: 2 }
+  );
+  console.log(msg);
+};
+
+const sentMessage = async () => {
+  console.log(222);
+  const msg = await (window as any).ipcRenderer.postMessage();
+  console.log(2223);
+  console.log(msg);
+};
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
 
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
+    <button type="button" @click="sentMessage">count is {{ count }}</button>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR

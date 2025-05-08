@@ -1,6 +1,7 @@
 // src-electron/main.js
 const { app, BrowserWindow } = require('electron')
 const { join } = require('path')
+import './shop/get'
 
 // 屏蔽安全警告
 // ectron Security Warning (Insecure Content-Security-Policy)
@@ -12,6 +13,12 @@ const createWindow = () => {
         width: 800,
         height: 600,
         title: 'love',
+        webPreferences: {
+            contextIsolation: true,
+            enableRemoteModule: true,
+            // 引入预加载脚本
+            preload: join(__dirname, 'preload.js'),
+        }
     })
 
     // win.loadURL('http://localhost:3000')
@@ -36,5 +43,6 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
+
 
 

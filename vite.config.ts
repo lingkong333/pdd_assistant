@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import electron from 'vite-plugin-electron'
+import electronRender from 'vite-plugin-electron-renderer'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,7 +10,11 @@ export default defineConfig({
     electron({
       // 主进程入口文件
       entry: './src-electron/main.js'
-    })
+    }),
+    // electron({
+    //   entry: './src-electron/preload.ts',
+    // }),
+    // electronRender()
   ],
   /*开发服务器选项*/
   server: {

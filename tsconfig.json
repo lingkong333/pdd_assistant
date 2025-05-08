@@ -24,6 +24,6 @@
     "checkJs": false,
     "allowSyntheticDefaultImports": true,
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src-electron/**/*.ts","src-electron/*.ts"],  // 根据您的 TS 文件路径调整
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","src-electron/**/*.ts","src-electron/*.ts", "src-electron/preload.js"],  // 根据您的 TS 文件路径调整
   "exclude": ["node_modules"]
 }
