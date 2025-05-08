@@ -1,12 +1,13 @@
 {
-  "name": "electron-desktop-tool",
+  "name": "love",
   "private": true,
   "version": "0.0.0",
   "main": "./dist-electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron:build": "vite build && electron-builder"
   },
   "dependencies": {
     "vue": "^3.5.13"
@@ -23,5 +24,37 @@
     "vite": "^6.3.5",
     "vite-plugin-electron": "^0.29.0",
     "vue-tsc": "^2.2.8"
+  },
+  "build": {
+    "productName": "love",
+    "appId": "dyy.dongyuanwai",
+    "copyright": "dyy.dongyuanwai © 2024",
+    "compression": "maximum",
+    "asar": true,
+    "directories": {
+      "output": "release/${version}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false,
+      "installerIcon": "./public/logo.ico",
+      "uninstallerIcon": "./public/logo.ico",
+      "installerHeaderIcon": "./public/logo.ico",
+      "perMachine": true,
+      "allowElevation": true,
+      "deleteAppDataOnUninstall": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "love"
+    },
+    "win": {
+      "icon": "./public/logo.ico",
+      "artifactName": "${productName}-v${version}-${platform}-setup.${ext}",
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ]
+    }
   }
 }
