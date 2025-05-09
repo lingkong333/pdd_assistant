@@ -1,4 +1,12 @@
 "use strict";
+const { httpClient } = require("../http");
+const getALiShopWebData = async (url) => {
+  const response = await httpClient.get(url);
+  if (response.success) {
+    console.log(response.data);
+    return response.data;
+  }
+};
 const { ipcMain } = require("electron");
 ipcMain.handle(
   "ev:send-desktop-capturer_source",
@@ -8,6 +16,8 @@ ipcMain.handle(
   }
 );
 ipcMain.handle("post-message", async () => {
+  const msg = await getALiShopWebData("https://detail.1688.com/offer/751949876973.html");
+  console.log(msg);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve("支付宝到账100万元");
