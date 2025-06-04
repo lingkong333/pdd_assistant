@@ -1,7 +1,7 @@
 // src-electron/main.js
 const { app, BrowserWindow } = require('electron')
 const { join } = require('path')
-import './shop/get'
+import './shop/pdd'
 
 // 屏蔽安全警告
 // ectron Security Warning (Insecure Content-Security-Policy)
